@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b8d8d5"
+    tools:context="com.example.maiv.pause.getting_started">
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/get_started_button"
+        android:elevation="16dp"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="393dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="133dp"
+        android:layout_height="64dp"
+        android:text="Placeholder, Replace with image or get exact font and sizes"
+        android:
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="187dp" />
+
+</android.support.constraint.ConstraintLayout>
