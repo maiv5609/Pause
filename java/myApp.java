@@ -1,4 +1,4 @@
-package com.example.maiv.pause;
+package com.pause;
 
 import android.app.Application;
 import android.os.SystemClock;
