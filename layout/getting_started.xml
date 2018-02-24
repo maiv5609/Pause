@@ -5,25 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#b8d8d5"
-    tools:context="com.example.maiv.pause.getting_started">
+    tools:context="com.pause.getting_started">
 
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="119dp"
         android:background="@drawable/get_started_button"
         android:elevation="16dp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="393dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="133dp"
-        android:layout_height="64dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="142dp"
+        android:layout_marginTop="187dp"
         android:text="Placeholder, Replace with image or get exact font and sizes"
-        android:
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="187dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
