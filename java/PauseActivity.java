@@ -44,7 +44,10 @@ public class PauseActivity extends Activity {
                     public void run()
                     {
                         // TODO: set text to time remaining
-                        timeTextView.setText("00:"+count);
+                        timeTextView.setText(
+                        String.format("%02d:%02d:%02d", count / 3600,
+                                (count % 3600) / 60, (count % 60)));
+
                         count++;
                     }
                 });
