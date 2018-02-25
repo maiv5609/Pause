@@ -6,6 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import android.media.AudioManager;
+import android.content.Context;
+import android.app.NotificationManager;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -59,4 +64,5 @@ public class PauseActivity extends Activity {
         });
 
     }
+
 }

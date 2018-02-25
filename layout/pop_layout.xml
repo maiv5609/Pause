@@ -9,32 +9,40 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="244dp"
-        android:text="Choose your pause time:" />
+        android:text="@string/select" />
 
     <Button
         android:id="@+id/confirmPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginLeft="88dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="15dp"
-        android:text="Pause" />
+        android:layout_below="@+id/spinner"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/cancelPause"
+        android:layout_toStartOf="@+id/cancelPause"
+        android:text="@string/pause" />
 
     <Button
         android:id="@+id/cancelPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/confirmPause"
-        android:layout_alignBottom="@+id/confirmPause"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/confirmPause"
-        android:layout_toRightOf="@+id/confirmPause"
-        android:text="Cancel" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spinner"
+        android:layout_marginEnd="82dp"
+        android:layout_marginRight="82dp"
+        android:text="@string/cancel" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/textView"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/textView"
+        android:spinnerMode="dropdown" />
 
 
 </RelativeLayout>

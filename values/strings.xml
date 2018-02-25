@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Pause</string>
+    <string name="cancel">Cancel</string>
+    <string name="pause">Pause</string>
+    <string name="quick_pause">Quick Pause</string>
+    <string name="select">Choose you pause time:</string>
 </resources>
