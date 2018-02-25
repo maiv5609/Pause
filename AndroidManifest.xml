@@ -34,6 +34,10 @@
             >
         </activity>
 
+        <activity android:name=".PauseActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
