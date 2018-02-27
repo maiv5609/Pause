@@ -3,7 +3,6 @@ package com.pause;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.maiv.pause.R;
 
 public class getting_started extends AppCompatActivity {
 
