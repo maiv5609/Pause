@@ -37,6 +37,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        Button statsButton = (Button)findViewById(R.id.statsButton);
+        statsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,StatsActivity.class));
+            }
+        });
+
+        Button storeButton = (Button)findViewById(R.id.storeButton);
+        storeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,StoreActivity.class));
+            }
+        });
+
     }
 
     // setRingerMode(this, AudioManager.RINGER_MODE_SILENT);

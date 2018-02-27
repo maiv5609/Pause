@@ -32,18 +32,21 @@
 
     <Button
         android:id="@+id/statsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="208dp"
+        android:background="@drawable/roundbutton"
         android:text="Stats"
         app:layout_constraintBaseline_toBaselineOf="@+id/storeButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/storeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="56dp"
+        android:background="@drawable/roundbutton"
         android:text="Store"
         app:layout_constraintStart_toEndOf="@+id/statsButton"
         app:layout_constraintTop_toTopOf="parent" />

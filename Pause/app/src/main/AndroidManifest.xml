@@ -27,6 +27,8 @@
             android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity android:name=".PauseActivity"></activity>
         <activity android:name=".BreedSelect"></activity>
+        <activity android:name=".StatsActivity"></activity>
+        <activity android:name=".StoreActivity"></activity>
     </application>
 
 </manifest>
