@@ -13,24 +13,24 @@
 
     <Button
         android:id="@+id/confirmPause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
         android:layout_below="@+id/spinner"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_toLeftOf="@+id/cancelPause"
-        android:layout_toStartOf="@+id/cancelPause"
+        android:background="@drawable/roundbutton"
         android:text="@string/pause" />
 
     <Button
         android:id="@+id/cancelPause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
         android:layout_below="@+id/spinner"
-        android:layout_marginEnd="82dp"
-        android:layout_marginRight="82dp"
+        android:layout_marginLeft="89dp"
+        android:layout_marginStart="89dp"
+        android:background="@drawable/roundbutton"
         android:text="@string/cancel" />
 
     <Spinner

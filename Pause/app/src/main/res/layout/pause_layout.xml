@@ -10,9 +10,10 @@
 
     <Button
         android:id="@+id/unlockButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="37dp"
         android:layout_marginBottom="78dp"
+        android:background="@drawable/roundbutton"
         android:text="Unlock"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

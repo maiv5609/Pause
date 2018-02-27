@@ -52,6 +52,7 @@ public class BreedSelect extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             startActivity(new Intent(BreedSelect.this,MainActivity.class));
+            finish();
         }
     };
 
