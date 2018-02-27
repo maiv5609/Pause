@@ -8,11 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.content.Intent;
 
 public class BreedSelect extends AppCompatActivity {
     ImageButton prevBreed;
     ImageButton nextBreed;
     ImageView currentImage;
+    Button breedSelect;
     //https://stackoverflow.com/questions/12249495/android-imagebutton-change-image-onclick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class BreedSelect extends AppCompatActivity {
         nextBreed = (ImageButton)findViewById(R.id.nextBreed);
         prevBreed.setOnClickListener(prevImage);
         nextBreed.setOnClickListener(nextImage);
+
+        breedSelect = (Button)findViewById(R.id.breedSelectButton);
+        breedSelect.setOnClickListener(selectBreed);
     }
 
 
@@ -36,10 +41,18 @@ public class BreedSelect extends AppCompatActivity {
     };
 
     View.OnClickListener nextImage = new OnClickListener() {
+        @Override
         public void onClick(View v) {
             //Change to next image if available
             currentImage.setImageResource(R.drawable.beagle2);
             }
+    };
+
+    View.OnClickListener selectBreed = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(BreedSelect.this,MainActivity.class));
+        }
     };
 
 }

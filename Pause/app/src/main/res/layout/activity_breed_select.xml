@@ -74,7 +74,7 @@
         app:srcCompat="@drawable/button" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/breedSelectButton"
         android:layout_width="149dp"
         android:layout_height="37dp"
         android:layout_marginBottom="8dp"
