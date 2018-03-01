@@ -1,6 +1,5 @@
 package com.pause;
 
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +14,7 @@ public class BreedSelect extends AppCompatActivity {
     ImageButton nextBreed;
     ImageView currentImage;
     Button breedSelect;
+
     //https://stackoverflow.com/questions/12249495/android-imagebutton-change-image-onclick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,8 @@ public class BreedSelect extends AppCompatActivity {
     View.OnClickListener selectBreed = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(BreedSelect.this,MainActivity.class));
+            Intent intent = new Intent(BreedSelect.this,MainActivity.class);
+            startActivity(intent);
             finish();
         }
     };
