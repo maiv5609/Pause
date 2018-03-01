@@ -1,9 +1,7 @@
 package com.pause;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -11,7 +9,7 @@ import android.widget.ImageButton;
  * Created by turner36 on 2/27/18.
  */
 
-public class StatsActivity extends Activity {
+public class StatsActivity extends AppCompatActivity {
 
     ImageButton homeButton;
 
