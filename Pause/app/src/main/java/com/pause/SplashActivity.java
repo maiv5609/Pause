@@ -9,43 +9,26 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Handler;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
-import java.io.*;
-
-import java.io.FileInputStream;
 
 public class SplashActivity extends AppCompatActivity {
-    String fileContents = "Test";
+
+    boolean existingUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        boolean existingUser = true;
         super.onCreate(savedInstanceState);
 
-        //After creating page make sure to check if the user has any data
-        //Attempt opening user file data, otherwise create
-        String USERFILE = getString(R.string.userData);
-        try{
-            FileInputStream userData = openFileInput(USERFILE);
-        }catch(FileNotFoundException e){
-            //Userfile not found, new user or file was deleted
-            existingUser = false;
-        }
+        SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(SplashActivity.this);
 
-        //If new user create new file
-        if(existingUser == false){
-            try{
-                FileOutputStream userData = openFileOutput(USERFILE, MODE_PRIVATE);
-                //Inital setup of file
-                userData.write(fileContents.getBytes());
-                userData.close();
-            }catch(Exception e){
-                //Error creating file
-                e.printStackTrace();
-            }
-        }
+        // using while developing to clear user data from preferences
+        myPreferences.edit().clear().commit();
 
-        //By this point user information should be setup and you can move onto next screen
+        existingUser = myPreferences.getBoolean("USER?", false);
+
+        // By this point user information should be setup and you can move onto next screen
 
         /**
          * Delay 1000 ms to display splash activity and forward along to main activity.
@@ -54,9 +37,16 @@ public class SplashActivity extends AppCompatActivity {
         handle.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Transfer to breed select if no user data found for dog, otherwise go to main activity
-                Intent intent = new Intent(SplashActivity.this, BreedSelect.class);
-                startActivity(intent);
+                // Transfer to breed select if no user data found for dog, otherwise go to main activity
+                if(!existingUser ) {
+                    Intent intent = new Intent(SplashActivity.this, BreedSelect.class);
+                    startActivity(intent);
+
+                } else {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
                 SplashActivity.this.finish();
             }
         },1500);

@@ -1,12 +1,13 @@
 package com.pause;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.content.Intent;
+import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,9 +18,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */
+        SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        boolean existingUser = myPreferences.getBoolean("USER?", false);
+
+        String breed = myPreferences.getString("BREED", "unknown");
+        ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
+        if (breed.equals("beagle")) {
+            dogImage.setImageResource(R.drawable.beagle);
+        } else if (breed.equals("shiba")) {
+            dogImage.setImageResource((R.drawable.shiba));
+        }
+
+
 
         Button pauseButton = (Button)findViewById(R.id.pauseButton);
         pauseButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 
