@@ -1,10 +1,12 @@
 package com.pause;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,15 +20,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        //Get preference file, by this point it should already be created
+        SharedPreferences myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         boolean existingUser = myPreferences.getBoolean("USER?", false);
 
         String breed = myPreferences.getString("BREED", "unknown");
         ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
+
         if (breed.equals("beagle")) {
             dogImage.setImageResource(R.drawable.beagle);
+        } else if (breed.equals("shihtzu")) {
+            dogImage.setImageResource(R.drawable.shihtzu);
         } else if (breed.equals("shiba")) {
-            dogImage.setImageResource((R.drawable.shiba));
+            dogImage.setImageResource(R.drawable.shiba);
         }
 
 

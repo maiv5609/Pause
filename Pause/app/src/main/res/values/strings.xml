@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Pause</string>
+    <string name="preferenceKey">com.pause.preference_file_key</string>
     <string name="userData">pauseUserData.txt</string>
     <string name="cancel">Cancel</string>
     <string name="pause">Pause</string>
     <string name="quick_pause">Quick Pause</string>
     <string name="select">Choose your pause time:</string>
+    <string name="dogName">What\'s your puppy\'s name?</string>
+    <string name="defaultName">Buddy</string>
     <string name="beagle">Beagle</string>
     <string name="shihTzu">Shih Tzu</string>
     <string name="shibaInu">Shiba Inu</string>
