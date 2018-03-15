@@ -39,7 +39,7 @@
         android:layout_marginTop="16dp"
         android:textAppearance="@android:style/TextAppearance.Material.Display2"
         app:layout_constraintEnd_toEndOf="@+id/unlockButton"
-        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView"
