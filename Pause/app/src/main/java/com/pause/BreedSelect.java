@@ -84,7 +84,7 @@ public class BreedSelect extends AppCompatActivity {
                     breedItr = 2;
                     currentBreed = "shiba";
                     break;
-                case 2: currentImage.setImageResource(R.drawable.shihtzu);
+                case 2: currentImage.setImageResource(R.drawable.shih_tzu);
                     currentName.setText("Shih Tzu");
                     breedItr = 3;
                     currentBreed = "shihtzu";
@@ -102,7 +102,7 @@ public class BreedSelect extends AppCompatActivity {
         public void onClick(View v) {
             //Change to prev breed
             switch(breedItr) {
-                case 1: currentImage.setImageResource(R.drawable.shihtzu);
+                case 1: currentImage.setImageResource(R.drawable.shih_tzu);
                     currentName.setText("Shih Tzu");
                     breedItr = 3;
                     currentBreed = "shihtzu";

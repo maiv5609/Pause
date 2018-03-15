@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         if (breed.equals("beagle")) {
             dogImage.setImageResource(R.drawable.beagle);
         } else if (breed.equals("shihtzu")) {
-            dogImage.setImageResource(R.drawable.shihtzu);
+            dogImage.setImageResource(R.drawable.shih_tzu);
         } else if (breed.equals("shiba")) {
             dogImage.setImageResource(R.drawable.shiba);
         }
