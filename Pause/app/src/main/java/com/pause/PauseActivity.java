@@ -46,7 +46,7 @@ public class PauseActivity extends Activity {
 
 
         devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        componentName = new ComponentName(PauseActivity.this, AdminReceiver.class);
+        //componentName = new ComponentName(PauseActivity.this, AdminReceiver.class);
         boolean active = devicePolicyManager.isAdminActive(componentName);
 
         if (active) {
@@ -180,11 +180,11 @@ public class PauseActivity extends Activity {
                         "You must enable this app as a device administrator\n\n" +
                                 "Please enable it and press back button to return here.",
                         Toast.LENGTH_LONG).show();
-                ComponentName admin = new ComponentName(PauseActivity.this, AdminReceiver.class);
-                Intent intent = new Intent(
-                        DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).putExtra(
-                        DevicePolicyManager.EXTRA_DEVICE_ADMIN, admin);
-                PauseActivity.this.startActivity(intent);
+                //ComponentName admin = new ComponentName(PauseActivity.this, AdminReceiver.class);
+               // Intent intent = new Intent(
+                       // DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).putExtra(
+                       // DevicePolicyManager.EXTRA_DEVICE_ADMIN, admin);
+                //PauseActivity.this.startActivity(intent);
             }
         }
     }

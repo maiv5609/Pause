@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
         TextView dogNameDisplay = (TextView)findViewById(R.id.textViewName);
 
-        dogNameDisplay.setText(dogName);
+        if(dogName != "unknown"){
+            dogNameDisplay.setText(dogName);
+        }
 
         if (breed.equals("beagle")) {
             dogImage.setImageResource(R.drawable.beagle);
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button statsButton = (Button)findViewById(R.id.statsButton);
+        ImageButton statsButton = (ImageButton)findViewById(R.id.statsButton);
         statsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button storeButton = (Button)findViewById(R.id.storeButton);
+        ImageButton storeButton = (ImageButton)findViewById(R.id.storeButton);
         storeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
