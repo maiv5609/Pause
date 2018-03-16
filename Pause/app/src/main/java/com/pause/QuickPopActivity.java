@@ -1,9 +1,7 @@
 package com.pause;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -15,8 +13,6 @@ import android.widget.Button;
  */
 
 public class QuickPopActivity extends Activity {
-
-    SharedPreferences myPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,11 +26,6 @@ public class QuickPopActivity extends Activity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.8), (int)(height*.2));
-
-        myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
-        SharedPreferences.Editor myEditor = myPreferences.edit();
-        myEditor.putInt("PAUSE_TIME", 1);
-        myEditor.commit();
 
         Button confirmButton = (Button)findViewById(R.id.confirmQuickPause);
         confirmButton.setOnClickListener(new View.OnClickListener() {

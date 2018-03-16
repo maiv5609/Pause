@@ -8,6 +8,79 @@
     android:background="#b8d8d5"
     tools:context="com.pause.MainActivity"
     tools:layout_editor_absoluteY="25dp">
+    <!-- BEGIN HEADER -->
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="Buddy"
+        android:background="#ffffff"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/brown_pause_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="Home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/dogBone"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:maxHeight="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/boneCount"
+        app:layout_constraintStart_toStartOf="@+id/textViewName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dogbone" />
+
+    <TextView
+        android:id="@+id/boneCount"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="56dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:gravity="center"
+        android:lineSpacingExtra="6dp"
+        android:lineSpacingMultiplier="2.5"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- END HEADER -->
+
+
+
+
+
+
+
 
     <Button
         android:id="@+id/quickPauseButton"
@@ -57,64 +130,17 @@
         app:layout_constraintStart_toEndOf="@+id/statsButton"
         app:layout_constraintTop_toBottomOf="@+id/homeButton" />
 
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/hindsiliguri_bold"
-        android:text="Buddy"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="@+id/storeButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home" />
-
     <ImageView
         android:id="@+id/dogImageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/beagle" />
-
-    <ImageView
-        android:id="@+id/dogBone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/statsButton"
-        app:layout_constraintEnd_toStartOf="@+id/boneCount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25"
-        app:srcCompat="@drawable/dogbone" />
-
-    <TextView
-        android:id="@+id/boneCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/hindsiliguri_bold"
-        android:lineSpacingExtra="6dp"
-        android:lineSpacingMultiplier="2.5"
-        android:text="0"
-        android:textSize="20sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/shih_tzu" />
 
 </android.support.constraint.ConstraintLayout>
