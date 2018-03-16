@@ -80,16 +80,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // setRingerMode(this, AudioManager.RINGER_MODE_SILENT);
-    /*
-    private void setRingerMode(Context context, int mode) {
-
-        NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        // Check for DND permissions for API 24+
-        if (android.os.Build.VERSION.SDK_INT < 24 || (android.os.Build.VERSION.SDK_INT >= 24 && !nm.isNotificationPolicyAccessGranted())) {
-            AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-            audioManager.setRingerMode(mode);
-        }
-    }
-    */
 }

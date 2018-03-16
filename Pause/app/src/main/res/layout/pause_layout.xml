@@ -37,7 +37,8 @@
         android:layout_marginStart="47dp"
         android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="@+id/unlockButton"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
