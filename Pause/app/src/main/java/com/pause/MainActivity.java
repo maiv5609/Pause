@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
         //Get preference file, by this point it should already be created
         SharedPreferences myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         boolean existingUser = myPreferences.getBoolean("USER?", false);
-
         String breed = myPreferences.getString("BREED", "unknown");
+        String dogName = myPreferences.getString("DOGNAME", "unknown");
+
         ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
+        TextView dogNameDisplay = (TextView)findViewById(R.id.textViewName);
+
+        dogNameDisplay.setText(dogName);
 
         if (breed.equals("beagle")) {
             dogImage.setImageResource(R.drawable.beagle);

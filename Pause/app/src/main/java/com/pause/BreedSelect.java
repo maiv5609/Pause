@@ -21,7 +21,7 @@ public class BreedSelect extends AppCompatActivity {
     ImageButton prevBreed;
     ImageButton nextBreed;
     ImageView currentImage;
-    TextView currentName;
+    TextView breedName;
     Button breedSelect;
 
     String currentBreed;
@@ -55,7 +55,7 @@ public class BreedSelect extends AppCompatActivity {
         setContentView(R.layout.activity_breed_select);
         currentImage = (ImageView)findViewById(R.id.currentBreed);
         //Get name of breed
-        currentName = (TextView)findViewById(R.id.breedName);
+        breedName = (TextView)findViewById(R.id.breedName);
 
         //Button listener, onclick change image
         prevBreed = (ImageButton)findViewById(R.id.prevBreed);
@@ -80,17 +80,17 @@ public class BreedSelect extends AppCompatActivity {
             //Change to next breed
             switch(breedItr) {
                 case 1: currentImage.setImageResource(R.drawable.shiba);
-                    currentName.setText("Shiba");
+                    breedName.setText("Shiba");
                     breedItr = 2;
                     currentBreed = "shiba";
                     break;
                 case 2: currentImage.setImageResource(R.drawable.shih_tzu);
-                    currentName.setText("Shih Tzu");
+                    breedName.setText("Shih Tzu");
                     breedItr = 3;
                     currentBreed = "shihtzu";
                     break;
                 case 3: currentImage.setImageResource(R.drawable.beagle);
-                    currentName.setText("Beagle");
+                    breedName.setText("Beagle");
                     breedItr = 1;
                     currentBreed = "beagle";
                     break;
@@ -103,17 +103,17 @@ public class BreedSelect extends AppCompatActivity {
             //Change to prev breed
             switch(breedItr) {
                 case 1: currentImage.setImageResource(R.drawable.shih_tzu);
-                    currentName.setText("Shih Tzu");
+                    breedName.setText("Shih Tzu");
                     breedItr = 3;
                     currentBreed = "shihtzu";
                     break;
                 case 2: currentImage.setImageResource(R.drawable.beagle);
-                    currentName.setText("Beagle");
+                    breedName.setText("Beagle");
                     breedItr = 1;
                     currentBreed = "beagle";
                     break;
                 case 3: currentImage.setImageResource(R.drawable.shiba);
-                    currentName.setText("Shiba");
+                    breedName.setText("Shiba");
                     breedItr = 2;
                     currentBreed = "shiba";
                     break;
@@ -124,14 +124,14 @@ public class BreedSelect extends AppCompatActivity {
     View.OnClickListener selectBreed = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Log.d("DOGNAME", "Click detected");
             //Save breed to preference file
             SharedPreferences.Editor myEditor = myPreferences.edit();
             myEditor.putString("BREED", currentBreed);
             myEditor.commit();
 
-            Intent intent = new Intent(BreedSelect.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            //Query for dogs' name
+            startActivity(new Intent(BreedSelect.this, nameDialogActivity.class));
         }
     };
 

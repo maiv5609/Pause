@@ -4,47 +4,55 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/getName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/username"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:fontFamily="@font/hindsiliguri_bold"
         android:text="@string/dogName"
         android:textAlignment="center"
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/dogName"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
+        android:layout_below="@+id/getName"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
+        android:fontFamily="@font/hindsiliguri_bold"
         android:hint="@string/defaultName"
         android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/nameNext"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="79dp"
-        android:layout_marginRight="79dp"
+
+        android:layout_alignLeft="@+id/dogName"
+        android:layout_alignStart="@+id/dogName"
+        android:layout_below="@+id/dogName"
+        android:layout_marginLeft="85dp"
+        android:layout_marginStart="85dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/hindsiliguri_bold"
         android:text="Next" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/nameBack"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/username"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/username"
-        android:layout_marginBottom="205dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
+
+        android:layout_alignEnd="@+id/dogName"
+        android:layout_alignRight="@+id/dogName"
+        android:layout_below="@+id/dogName"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/hindsiliguri_bold"
         android:text="Back" />
 
 </RelativeLayout>
