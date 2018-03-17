@@ -31,6 +31,7 @@ public class QuickPopActivity extends Activity {
 
         getWindow().setLayout((int)(width*.8), (int)(height*.2));
 
+        /* Store set time in user data preferences. */
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         SharedPreferences.Editor myEditor = myPreferences.edit();
         myEditor.putInt("PAUSE_TIME", 1);

@@ -45,16 +45,12 @@ public class PopActivity extends Activity {
         // Set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
 
-
-        // int selected = Integer.parseInt(dropdown.getSelectedItem().toString());
-
+        /* Get the set time selected and store in user data preferences. */
         String text = dropdown.getSelectedItem().toString();
         int digits = Integer.parseInt(text.replaceAll("[^0-9.]", ""));
-
         SharedPreferences.Editor myEditor = myPreferences.edit();
         myEditor.putInt("PAUSE_TIME", digits);
         myEditor.commit();
-
 
         Button confirmButton = (Button)findViewById(R.id.confirmPause);
         confirmButton.setOnClickListener(new View.OnClickListener() {

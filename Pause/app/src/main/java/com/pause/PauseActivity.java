@@ -6,8 +6,10 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,16 +35,18 @@ public class PauseActivity extends Activity {
     TextView timeTextView;
     Timer t;
     int pauseTime;
+    boolean active = false;
 
-    Button unlockButton, enableButton;
-    static final int RESULT_ENABLE = 1;
-    DevicePolicyManager devicePolicyManager;
-    ComponentName componentName;
+    private DevicePolicyManager devicePolicyManager=null;
+    private ComponentName cn=null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pause_layout);
+
+        cn=new ComponentName(this, AdminReceiver.class);
+        devicePolicyManager=(DevicePolicyManager)getSystemService(DEVICE_POLICY_SERVICE);
 
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         String breed = myPreferences.getString("BREED", "unknown");
@@ -56,70 +60,17 @@ public class PauseActivity extends Activity {
             dogImage.setImageResource(R.drawable.shiba_sleeping);
         }
 
-        // enableButton = (Button) findViewById(R.id.enableButton);
-        // lockButton = (Button) findViewById(R.id.lockButton);
-
-
-        devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        //componentName = new ComponentName(PauseActivity.this, AdminReceiver.class);
-        boolean active = devicePolicyManager.isAdminActive(componentName);
-
-        /*
-        if (active) {
-            enableButton.setText("DISABLE");
-            // lockButton.setVisibility(View.VISIBLE);
-        } else {
-            enableButton.setText("ENABLE");
-            // lockButton.setVisibility(View.GONE);
-        }
-        enableButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean active = devicePolicyManager.isAdminActive(componentName);
-
-                lockScreen();
-                if (active) {
-                    devicePolicyManager.removeActiveAdmin(componentName);
-                    enableButton.setText("ENABLE");
-                    // lockButton.setVisibility(View.GONE);
-                } else {
-                    Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-                    intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName);
-                    intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "You Should Enable the app!");
-                    startActivityForResult(intent, RESULT_ENABLE);
-                }
-            }
-        });
-        */
-
-
-        /*
-        Button lockButton = (Button)findViewById(R.id.lockButton);
-        lockButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                devicePolicyManager.lockNow();
-
-            }
-        });
-        */
-
-
-
         int selectedTime = myPreferences.getInt("PAUSE_TIME", 0);
         pauseTime = selectedTime * 60;
 
-        /**
-         * Timer increments count when activity starts until unlock button is clicked.
-         *
-         */
+        /* Timer increments count when activity starts until unlock button is clicked. */
         t = new Timer();
-
         timeTextView = (TextView)findViewById(R.id.timeTextView);
         timeTextView.setText(
                 String.format("%02d:%02d:%02d", pauseTime / 3600,
                         (pauseTime % 3600) / 60, (pauseTime % 60)));
 
+        lockMeNow();
 
         if (active) {
             t.scheduleAtFixedRate(new TimerTask() {
@@ -134,9 +85,10 @@ public class PauseActivity extends Activity {
                                     String.format("%02d:%02d:%02d", pauseTime / 3600,
                                             (pauseTime % 3600) / 60, (pauseTime % 60)));
 
+                            if (pauseTime == 0)
+                                t.cancel();
+
                             pauseTime--;
-
-
                         }
                     });
                 }
@@ -154,43 +106,21 @@ public class PauseActivity extends Activity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case RESULT_ENABLE:
-                if(resultCode == Activity.RESULT_OK ){
-                    // enableButton.setText("DISABLE");
-                    // lockButton.setVisibility(View.VISIBLE);
-                    Toast.makeText(this, "DISABLE", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
-                return;
-
+    /**
+     * https://github.com/commonsguy/cw-omnibus/tree/master/DeviceAdmin/LockMeNow
+     */
+    public void lockMeNow() {
+        Log.d("myTag","lockMeNow()");
+        if (devicePolicyManager.isAdminActive(cn)) {
+            devicePolicyManager.lockNow();
+            active = true;
         }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-    private void lockScreen() {
-        PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
-        if (pm.isScreenOn()) {
-            DevicePolicyManager policy = (DevicePolicyManager)
-                    getSystemService(Context.DEVICE_POLICY_SERVICE);
-            try {
-                policy.lockNow();
-            } catch (SecurityException ex) {
-                Toast.makeText(
-                        PauseActivity.this,
-                        "You must enable this app as a device administrator\n\n" +
-                                "Please enable it and press back button to return here.",
-                        Toast.LENGTH_LONG).show();
-                //ComponentName admin = new ComponentName(PauseActivity.this, AdminReceiver.class);
-               // Intent intent = new Intent(
-                       // DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).putExtra(
-                       // DevicePolicyManager.EXTRA_DEVICE_ADMIN, admin);
-                //PauseActivity.this.startActivity(intent);
-            }
+        else {
+            Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, cn);
+            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                    getString(R.string.device_admin_explanation));
+            startActivity(intent);
         }
     }
 }
