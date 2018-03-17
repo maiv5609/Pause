@@ -19,6 +19,8 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import pl.droidsonroids.gif.GifImageView;
+
 /**
  * Created by summerturner on 2/24/18.
  */
@@ -30,7 +32,7 @@ public class PauseActivity extends Activity {
     Timer t;
     int pauseTime;
 
-    Button lockButton, enableButton;
+    Button unlockButton, enableButton;
     static final int RESULT_ENABLE = 1;
     DevicePolicyManager devicePolicyManager;
     ComponentName componentName;
@@ -42,7 +44,7 @@ public class PauseActivity extends Activity {
 
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         String breed = myPreferences.getString("BREED", "unknown");
-        ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
+        GifImageView dogImage = (GifImageView)findViewById(R.id.gifImageView);
 
         if (breed.equals("beagle")) {
             dogImage.setImageResource(R.drawable.beagle_sleeping);
@@ -52,20 +54,21 @@ public class PauseActivity extends Activity {
             dogImage.setImageResource(R.drawable.shiba_sleeping);
         }
 
-        enableButton = (Button) findViewById(R.id.enableButton);
-        lockButton = (Button) findViewById(R.id.lockButton);
+        // enableButton = (Button) findViewById(R.id.enableButton);
+        // lockButton = (Button) findViewById(R.id.lockButton);
 
 
         devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
         //componentName = new ComponentName(PauseActivity.this, AdminReceiver.class);
         boolean active = devicePolicyManager.isAdminActive(componentName);
 
+        /*
         if (active) {
             enableButton.setText("DISABLE");
-            lockButton.setVisibility(View.VISIBLE);
+            // lockButton.setVisibility(View.VISIBLE);
         } else {
             enableButton.setText("ENABLE");
-            lockButton.setVisibility(View.GONE);
+            // lockButton.setVisibility(View.GONE);
         }
         enableButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +79,7 @@ public class PauseActivity extends Activity {
                 if (active) {
                     devicePolicyManager.removeActiveAdmin(componentName);
                     enableButton.setText("ENABLE");
-                    lockButton.setVisibility(View.GONE);
+                    // lockButton.setVisibility(View.GONE);
                 } else {
                     Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
                     intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName);
@@ -85,9 +88,10 @@ public class PauseActivity extends Activity {
                 }
             }
         });
+        */
 
 
-
+        /*
         Button lockButton = (Button)findViewById(R.id.lockButton);
         lockButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,9 +100,7 @@ public class PauseActivity extends Activity {
 
             }
         });
-
-
-
+        */
 
 
 
@@ -155,8 +157,8 @@ public class PauseActivity extends Activity {
         switch (requestCode){
             case RESULT_ENABLE:
                 if(resultCode == Activity.RESULT_OK ){
-                    enableButton.setText("DISABLE");
-                    lockButton.setVisibility(View.VISIBLE);
+                    // enableButton.setText("DISABLE");
+                    // lockButton.setVisibility(View.VISIBLE);
                     Toast.makeText(this, "DISABLE", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
