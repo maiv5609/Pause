@@ -51,6 +51,7 @@
         android:layout_width="50dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:maxHeight="30dp"
         app:layout_constraintEnd_toStartOf="@+id/boneCount"
         app:layout_constraintStart_toStartOf="@+id/textViewName"
@@ -62,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:fontFamily="@font/hindsiliguri_bold"
         android:gravity="center"
         android:lineSpacingExtra="6dp"
@@ -73,15 +75,85 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="435dp"
-        android:layout_height="403dp"
-        android:layout_marginBottom="190dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-        <!--app:srcCompat="@drawable/graph"-->
+    <TextView
+        android:id="@+id/totalBones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="Total Bones Earned"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalTime" />
+
+    <TextView
+        android:id="@+id/dogAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="Dog's Age"
+        android:textColor="@android:color/black"
+
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalBones" />
+
+    <TextView
+        android:id="@+id/totalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="137dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="Total Time Paused"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bonesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="0 Bones"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeValue" />
+
+    <TextView
+        android:id="@+id/timeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:layout_marginTop="137dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="00:00:00"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dogAgeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/hindsiliguri_bold"
+        android:text="0 Days"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bonesValue" />
+    <!--app:srcCompat="@drawable/graph"-->
 
     <!-- END HEADER -->
 

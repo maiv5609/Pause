@@ -40,6 +40,17 @@ public class PauseActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pause_layout);
 
+        myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
+        String breed = myPreferences.getString("BREED", "unknown");
+        ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
+
+        if (breed.equals("beagle")) {
+            dogImage.setImageResource(R.drawable.beagle_sleeping);
+        } else if (breed.equals("shihtzu")) {
+            dogImage.setImageResource(R.drawable.shih_tzu_sleeping);
+        } else if (breed.equals("shiba")) {
+            dogImage.setImageResource(R.drawable.shiba_sleeping);
+        }
 
         enableButton = (Button) findViewById(R.id.enableButton);
         lockButton = (Button) findViewById(R.id.lockButton);
@@ -88,17 +99,7 @@ public class PauseActivity extends Activity {
 
 
 
-        myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
-        String breed = myPreferences.getString("BREED", "unknown");
-        ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
 
-        if (breed.equals("beagle")) {
-            dogImage.setImageResource(R.drawable.beagle_sleeping);
-        } else if (breed.equals("shihtzu")) {
-            dogImage.setImageResource(R.drawable.shih_tzu_sleeping);
-        } else if (breed.equals("shiba")) {
-            dogImage.setImageResource(R.drawable.shiba_sleeping);
-        }
 
 
         int selectedTime = myPreferences.getInt("PAUSE_TIME", 0);
