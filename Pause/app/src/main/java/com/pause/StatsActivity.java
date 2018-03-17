@@ -1,5 +1,7 @@
 package com.pause;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +10,12 @@ import android.widget.ImageButton;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
+
+import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * Created by turner36 on 2/27/18.
@@ -18,6 +24,7 @@ import com.jjoe64.graphview.series.DataPoint;
 public class StatsActivity extends AppCompatActivity {
 
     ImageButton homeButton;
+    SharedPreferences myPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +34,28 @@ public class StatsActivity extends AppCompatActivity {
         homeButton = (ImageButton)findViewById(R.id.statsHomeButton);
         homeButton.setOnClickListener(selectHome);
         GraphView graph = (GraphView) findViewById(R.id.graph);
+        myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
+
+
+        /* ----- Weekly ----- */
+        // use static labels for horizontal and vertical labels
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(new String[] {"Mon.", "Tues.", "Wed.", "Thurs.", "Fri.", "Sat.", "Sun."});
+        staticLabelsFormatter.setVerticalLabels(new String[] {"low",  "high"});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, -1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(0, myPreferences.getInt("MON.", 0)),
+                new DataPoint(1, myPreferences.getInt("TUES.", 0)),
+                new DataPoint(2, myPreferences.getInt("WED.", 0)),
+                new DataPoint(3, myPreferences.getInt("THURS.", 0)),
+                new DataPoint(4, myPreferences.getInt("FRI.", 0)),
+                new DataPoint(5, myPreferences.getInt("SAT.", 0)),
+                new DataPoint(6, myPreferences.getInt("SUN.", 0)),
         });
         graph.addSeries(series);
         // styling
-        series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
-            @Override
-            public int get(DataPoint data) {
-                return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
-            }
-        });
-
         series.setSpacing(50);
-
-        // draw values on top
-        series.setDrawValuesOnTop(true);
-        series.setValuesOnTopColor(Color.RED);
     }
 
 

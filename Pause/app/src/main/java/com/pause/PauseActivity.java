@@ -18,6 +18,11 @@ import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -62,6 +67,71 @@ public class PauseActivity extends Activity {
 
         int selectedTime = myPreferences.getInt("PAUSE_TIME", 0);
         pauseTime = selectedTime * 60;
+
+        // Add requested lock time to preference file. Assumes that user went full time
+        Calendar calendar = Calendar.getInstance();
+
+        //Getting week information
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        int currWeek = calendar.WEEK_OF_MONTH;
+
+        //Getting month information
+        int month = myPreferences.getInt("MONTH", 0);
+        int currMonth = calendar.MONTH;
+        int year = calendar.YEAR;
+        int monthTotal = myPreferences.getInt("MONTHTOTAL", 0);
+        SharedPreferences.Editor myEditor = myPreferences.edit();
+        String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+        Log.d("CURRENT LOCK", ""+selectedTime);
+        Log.d("CURRENT DAY", ""+day);
+
+        //Add day
+        switch (day) {
+            case Calendar.SUNDAY:
+                myEditor.putInt("SUN.", selectedTime);
+                myEditor.putString("sunDate", date);
+                break;
+            case Calendar.MONDAY:
+                myEditor.putInt("MON.", selectedTime);
+                myEditor.putString("monDate", date);
+                break;
+            case Calendar.TUESDAY:
+                myEditor.putInt("TUES.", selectedTime);
+                myEditor.putString("tuesDate", date);
+                break;
+            case Calendar.WEDNESDAY:
+                myEditor.putInt("WED.", selectedTime);
+                myEditor.putString("wedDate", date);
+                break;
+            case Calendar.THURSDAY:
+                myEditor.putInt("THURS.", selectedTime);
+                myEditor.putString("thursDate", date);
+                break;
+            case Calendar.FRIDAY:
+                myEditor.putInt("FRI.", selectedTime);
+                myEditor.putString("friDate", date);
+                break;
+            case Calendar.SATURDAY:
+                myEditor.putInt("SAT.", selectedTime);
+                myEditor.putString("satDate", date);
+                break;
+        }
+
+        if (month == currMonth){
+            //Current month
+            monthTotal = monthTotal + selectedTime;
+            myEditor.putInt("MONTHTOTAL", monthTotal);
+            myEditor.putInt(currMonth+"MONTHTOTAL", monthTotal);
+        }else{
+            //New month
+            monthTotal = 0 + selectedTime;
+            myEditor.putInt("MONTHTOTAL", monthTotal);
+            myEditor.putInt(currMonth+"MONTHTOTAL", monthTotal);
+        }
+        //Add month
+        myEditor.putInt("YEAR", year);
+        myEditor.commit();
 
         /* Timer increments count when activity starts until unlock button is clicked. */
         t = new Timer();
