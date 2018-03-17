@@ -23,6 +23,8 @@ import pl.droidsonroids.gif.GifImageView;
 
 /**
  * Created by summerturner on 2/24/18.
+ *
+ * Uses android-gif-drawable for animated GIFs https://github.com/koral--/android-gif-drawable
  */
 
 public class PauseActivity extends Activity {

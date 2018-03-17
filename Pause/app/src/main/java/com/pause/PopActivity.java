@@ -1,7 +1,9 @@
 package com.pause;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -16,6 +18,8 @@ import android.widget.ArrayAdapter;
 
 public class PopActivity extends Activity {
 
+    SharedPreferences myPreferences;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,8 @@ public class PopActivity extends Activity {
 
         getWindow().setLayout((int)(width*.8), (int)(height*.4));
 
+        myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
+
         /**
          * Spinner for the dropdown to select minutes for pause time.
          */
@@ -38,6 +44,17 @@ public class PopActivity extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         // Set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
+
+
+        // int selected = Integer.parseInt(dropdown.getSelectedItem().toString());
+
+        String text = dropdown.getSelectedItem().toString();
+        int digits = Integer.parseInt(text.replaceAll("[^0-9.]", ""));
+
+        SharedPreferences.Editor myEditor = myPreferences.edit();
+        myEditor.putInt("PAUSE_TIME", digits);
+        myEditor.commit();
+
 
         Button confirmButton = (Button)findViewById(R.id.confirmPause);
         confirmButton.setOnClickListener(new View.OnClickListener() {
