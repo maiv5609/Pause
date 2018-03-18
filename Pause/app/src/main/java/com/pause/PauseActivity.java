@@ -131,6 +131,7 @@ public class PauseActivity extends Activity {
         }
         //Add month
         myEditor.putInt("YEAR", year);
+        myEditor.putInt("TOTALTIME", myPreferences.getInt("TOTALTIME", 0) + selectedTime);
         myEditor.commit();
 
         /* Timer increments count when activity starts until unlock button is clicked. */

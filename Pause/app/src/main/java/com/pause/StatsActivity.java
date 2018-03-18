@@ -37,21 +37,21 @@ public class StatsActivity extends AppCompatActivity {
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
 
 
-        /* ----- Weekly ----- */
+        /* ----- Daily ----- */
         // use static labels for horizontal and vertical labels
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
         staticLabelsFormatter.setHorizontalLabels(new String[] {"Mon.", "Tues.", "Wed.", "Thurs.", "Fri.", "Sat.", "Sun."});
-        staticLabelsFormatter.setVerticalLabels(new String[] {"low",  "high"});
+        staticLabelsFormatter.setVerticalLabels(new String[] {"0HR", "2.5HRS" ,"5HRS"});
         graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, myPreferences.getInt("MON.", 0)),
-                new DataPoint(1, myPreferences.getInt("TUES.", 0)),
-                new DataPoint(2, myPreferences.getInt("WED.", 0)),
-                new DataPoint(3, myPreferences.getInt("THURS.", 0)),
-                new DataPoint(4, myPreferences.getInt("FRI.", 0)),
-                new DataPoint(5, myPreferences.getInt("SAT.", 0)),
-                new DataPoint(6, myPreferences.getInt("SUN.", 0)),
+                new DataPoint(0, (myPreferences.getInt("MON.", 0)/60)),
+                new DataPoint(1, (myPreferences.getInt("TUES.", 0)/60)),
+                new DataPoint(2, (myPreferences.getInt("WED.", 0)/60)),
+                new DataPoint(3, (myPreferences.getInt("THURS.", 0)/60)),
+                new DataPoint(4, (myPreferences.getInt("FRI.", 0)/60)),
+                new DataPoint(5, (myPreferences.getInt("SAT.", 0))),
+                new DataPoint(6, (myPreferences.getInt("SUN.", 0)/60))
         });
         graph.addSeries(series);
         // styling

@@ -31,7 +31,7 @@ public class PopActivity extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8), (int)(height*.4));
+        getWindow().setLayout((int)(width*.8), (int)(height*.25));
 
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
 
