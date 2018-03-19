@@ -2,8 +2,10 @@ package com.pause;
 
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,18 +42,33 @@ public class PauseActivity extends Activity {
     TextView timeTextView;
     Timer t;
     int pauseTime;
+    int count;
     boolean active = false;
+    static Activity activity;
 
     private DevicePolicyManager devicePolicyManager=null;
-    private ComponentName cn=null;
+    private ComponentName adminReciever = null;
+    //private ComponentName broadcastReceiver = null;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pause_layout);
+        activity = this;
 
-        cn=new ComponentName(this, AdminReceiver.class);
-        devicePolicyManager=(DevicePolicyManager)getSystemService(DEVICE_POLICY_SERVICE);
+        adminReciever = new ComponentName(this, AdminReceiver.class);
+        devicePolicyManager = (DevicePolicyManager)getSystemService(DEVICE_POLICY_SERVICE);
+
+        /*
+        IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        broadcastReceiver = new UserPresentBroadcastReceiver();
+        registerReceiver(broadcastReceiver, filter);
+
+        Log.d("USER_PRESENT", filter.getAction(2));
+        */
 
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         String breed = myPreferences.getString("BREED", "unknown");
@@ -132,6 +149,7 @@ public class PauseActivity extends Activity {
         //Add month
         myEditor.putInt("YEAR", year);
         myEditor.putInt("TOTALTIME", myPreferences.getInt("TOTALTIME", 0) + selectedTime);
+        myEditor.putInt("PREVIOUSTIME", selectedTime);
         myEditor.commit();
 
         /* Timer increments count when activity starts until unlock button is clicked. */
@@ -141,16 +159,13 @@ public class PauseActivity extends Activity {
                 String.format("%02d:%02d:%02d", pauseTime / 3600,
                         (pauseTime % 3600) / 60, (pauseTime % 60)));
 
-        lockMeNow();
-
-        if (active) {
+        // if (active) {
             t.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
 
                             timeTextView.setText(
                                     String.format("%02d:%02d:%02d", pauseTime / 3600,
@@ -159,18 +174,33 @@ public class PauseActivity extends Activity {
                             if (pauseTime == 0)
                                 t.cancel();
 
+                            /*
+                            if (count == 2)
+                               lockMeNow();
+                            */
+
+                            if (pauseTime == 0) {
+                                startActivity(new Intent(PauseActivity.this, CongratsActivity.class));
+                                finish();
+                            }
+
                             pauseTime--;
+                            count++;
                         }
                     });
                 }
             }, 1000, 1000);
-        }
+        // }
+
+
 
         Button unlockButton = (Button)findViewById(R.id.unlockButton);
         unlockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 t.cancel();
+                // onDestroy();
+
                 finish();
             }
         });
@@ -182,16 +212,35 @@ public class PauseActivity extends Activity {
      */
     public void lockMeNow() {
         Log.d("myTag","lockMeNow()");
-        if (devicePolicyManager.isAdminActive(cn)) {
+        if (devicePolicyManager.isAdminActive(adminReciever)) {
             devicePolicyManager.lockNow();
             active = true;
         }
         else {
             Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, cn);
+            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, adminReciever);
             intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
                     getString(R.string.device_admin_explanation));
             startActivity(intent);
         }
+    }
+
+    /*
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.v("$$$$$$", "In Method: onDestroy()");
+
+        if (broadcastReceiver != null) {
+            unregisterReceiver(broadcastReceiver);
+            broadcastReceiver = null;
+        }
+
+    }
+    */
+
+    public static void closeActivity(){
+        activity.finish();
     }
 }

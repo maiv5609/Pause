@@ -16,22 +16,27 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences myPreferences;
+    int bones;
+    TextView dogBones;
+    static final int REQUEST_OK = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Get preference file, by this point it should already be created
-        SharedPreferences myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
+        // Get preference file, by this point it should already be created
+        myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         boolean existingUser = myPreferences.getBoolean("USER?", false);
         String breed = myPreferences.getString("BREED", "unknown");
         String dogName = myPreferences.getString("DOGNAME", "unknown");
 
         ImageView dogImage = (ImageView)findViewById(R.id.dogImageView);
         TextView dogNameDisplay = (TextView)findViewById(R.id.textViewName);
+        dogBones = (TextView)findViewById(R.id.boneCount);
 
-        if(dogName != "unknown"){
+        if (dogName != "unknown"){
             dogNameDisplay.setText(dogName);
         }
 

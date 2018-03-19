@@ -30,6 +30,7 @@
         <activity android:name="com.pause.BreedSelect"></activity>
         <activity android:name="com.pause.StatsActivity"></activity>
         <activity android:name="com.pause.StoreActivity"></activity>
+        <activity android:name="com.pause.CongratsActivity"></activity>
         <receiver
             android:name=".AdminReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN" >
@@ -41,6 +42,7 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>
