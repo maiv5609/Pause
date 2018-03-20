@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // Transfer to breed select if no user data found for dog, otherwise go to main activity
                 if(!existingUser ) {
-                    Intent intent = new Intent(SplashActivity.this, BreedSelect.class);
+                    Intent intent = new Intent(SplashActivity.this, getting_started.class);
                     startActivity(intent);
 
                 } else {

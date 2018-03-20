@@ -7,29 +7,27 @@
     android:background="#b8d8d5"
     tools:context="com.pause.getting_started">
 
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button"
+    <ImageView
+        android:id="@+id/gettingStarted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="119dp"
-        android:background="@drawable/get_started_button"
-        android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/get_started" />
 
-    <TextView
-        android:id="@+id/TextView1"
-        android:layout_width="133dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="142dp"
-        android:layout_marginTop="187dp"
-        android:text="Placeholder, Replace with image or get exact font and sizes"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+    <ImageButton
+        android:id="@+id/gettingStartedButton"
+        android:layout_width="207dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="224dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

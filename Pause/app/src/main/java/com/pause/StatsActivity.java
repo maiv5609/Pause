@@ -45,6 +45,8 @@ public class StatsActivity extends AppCompatActivity {
         float hours = myPreferences.getFloat("TOTALTIME", 0.0f);
         timePaused.setText(""+hours/60 + " HRS");
 
+
+
         /* ----- Daily ----- */
         // use static labels for horizontal and vertical labels
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);

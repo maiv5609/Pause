@@ -26,6 +26,7 @@
             android:name="com.pause.QuickPopActivity"
             android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity android:name="com.pause.nameDialogActivity"></activity>
+        <activity android:name="com.pause.getting_started"></activity>
         <activity android:name="com.pause.PauseActivity"></activity>
         <activity android:name="com.pause.BreedSelect"></activity>
         <activity android:name="com.pause.StatsActivity"></activity>
