@@ -85,6 +85,8 @@ public class PauseActivity extends Activity {
         int selectedTime = myPreferences.getInt("PAUSE_TIME", 0);
         pauseTime = selectedTime * 60;
 
+        Log.d("PAUSETIME", "selectedTime * 60 = "+pauseTime);
+
         // Add requested lock time to preference file. Assumes that user went full time
         Calendar calendar = Calendar.getInstance();
 
