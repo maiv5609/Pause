@@ -106,31 +106,31 @@ public class PauseActivity extends Activity {
         //Add day
         switch (day) {
             case Calendar.SUNDAY:
-                myEditor.putInt("SUN.", selectedTime);
+                myEditor.putFloat("SUN.", selectedTime);
                 myEditor.putString("sunDate", date);
                 break;
             case Calendar.MONDAY:
-                myEditor.putInt("MON.", selectedTime);
+                myEditor.putFloat("MON.", selectedTime);
                 myEditor.putString("monDate", date);
                 break;
             case Calendar.TUESDAY:
-                myEditor.putInt("TUES.", selectedTime);
+                myEditor.putFloat("TUES.", selectedTime);
                 myEditor.putString("tuesDate", date);
                 break;
             case Calendar.WEDNESDAY:
-                myEditor.putInt("WED.", selectedTime);
+                myEditor.putFloat("WED.", selectedTime);
                 myEditor.putString("wedDate", date);
                 break;
             case Calendar.THURSDAY:
-                myEditor.putInt("THURS.", selectedTime);
+                myEditor.putFloat("THURS.", selectedTime);
                 myEditor.putString("thursDate", date);
                 break;
             case Calendar.FRIDAY:
-                myEditor.putInt("FRI.", selectedTime);
+                myEditor.putFloat("FRI.", selectedTime);
                 myEditor.putString("friDate", date);
                 break;
             case Calendar.SATURDAY:
-                myEditor.putInt("SAT.", selectedTime);
+                myEditor.putFloat("SAT.", selectedTime);
                 myEditor.putString("satDate", date);
                 break;
         }
@@ -138,18 +138,18 @@ public class PauseActivity extends Activity {
         if (month == currMonth){
             //Current month
             monthTotal = monthTotal + selectedTime;
-            myEditor.putInt("MONTHTOTAL", monthTotal);
-            myEditor.putInt(currMonth+"MONTHTOTAL", monthTotal);
+            myEditor.putFloat("MONTHTOTAL", monthTotal);
+            myEditor.putFloat(currMonth+"MONTHTOTAL", monthTotal);
         }else{
             //New month
             monthTotal = 0 + selectedTime;
-            myEditor.putInt("MONTHTOTAL", monthTotal);
-            myEditor.putInt(currMonth+"MONTHTOTAL", monthTotal);
+            myEditor.putFloat("MONTHTOTAL", monthTotal);
+            myEditor.putFloat(currMonth+"MONTHTOTAL", monthTotal);
         }
         //Add month
         myEditor.putInt("YEAR", year);
-        myEditor.putInt("TOTALTIME", myPreferences.getInt("TOTALTIME", 0) + selectedTime);
-        myEditor.putInt("PREVIOUSTIME", selectedTime);
+        myEditor.putFloat("TOTALTIME", myPreferences.getInt("TOTALTIME", 0) + selectedTime);
+        myEditor.putFloat("PREVIOUSTIME", selectedTime);
         myEditor.commit();
 
         /* Timer increments count when activity starts until unlock button is clicked. */
