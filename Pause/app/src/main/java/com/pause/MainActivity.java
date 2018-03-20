@@ -1,5 +1,6 @@
 package com.pause;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     int bones;
     TextView dogBones;
     static final int REQUEST_OK = 1;
+    static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         Button quickPauseButton = (Button)findViewById(R.id.quickPauseButton);
         quickPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,5 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static void closeActivity(){
+        activity.finish();
+    }
 
 }

@@ -14,7 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/hindsiliguri_bold"
-        android:text="Quick pause for 15 minutes?"
+        android:text="Quick pause for 1 minute(s)?"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

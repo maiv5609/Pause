@@ -96,7 +96,7 @@ public class PauseActivity extends Activity {
         int month = myPreferences.getInt("MONTH", 0);
         int currMonth = calendar.MONTH;
         int year = calendar.YEAR;
-        int monthTotal = myPreferences.getInt("MONTHTOTAL", 0);
+        float monthTotal = myPreferences.getFloat("MONTHTOTAL", 0);
         SharedPreferences.Editor myEditor = myPreferences.edit();
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
@@ -107,6 +107,12 @@ public class PauseActivity extends Activity {
         int totalBones = myPreferences.getInt("TOTALBONES", 0);
         int currBones = myPreferences.getInt("CURRBONES", 0);
         switch (selectedTime){
+            case 1: // using 1 minute for demo and testing purposes
+                totalBones = totalBones + 1;
+                currBones = currBones + 1;
+                myEditor.putInt("TOTALBONES", totalBones);
+                myEditor.putInt("CURRBONES", currBones);
+                break;
             case 15:
                 totalBones = totalBones + 2;
                 currBones = currBones + 2;
@@ -178,8 +184,8 @@ public class PauseActivity extends Activity {
         }
         //Add month
         myEditor.putInt("YEAR", year);
-        myEditor.putFloat("TOTALTIME", myPreferences.getInt("TOTALTIME", 0) + selectedTime);
-        myEditor.putFloat("PREVIOUSTIME", selectedTime);
+        myEditor.putFloat("TOTALTIME", myPreferences.getFloat("TOTALTIME", 0) + selectedTime);
+        myEditor.putInt("PREVIOUSTIME", selectedTime);
         myEditor.commit();
 
         /* Timer increments count when activity starts until unlock button is clicked. */
@@ -230,7 +236,6 @@ public class PauseActivity extends Activity {
             public void onClick(View v) {
                 t.cancel();
                 // onDestroy();
-
                 finish();
             }
         });

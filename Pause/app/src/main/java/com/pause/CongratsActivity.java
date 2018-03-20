@@ -19,6 +19,7 @@ public class CongratsActivity extends Activity {
 
     SharedPreferences myPreferences;
     TextView timeAchievedTextView;
+    TextView bonesTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +29,38 @@ public class CongratsActivity extends Activity {
 
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
         String breed = myPreferences.getString("BREED", "unknown");
-        int bones = myPreferences.getInt("TOTALBONES", 0);
+        int bones = 0;
 
-        int previousLockTime = myPreferences.getInt("PREVIOUSTIME", 0) * 60;
+        int previousLockTime = myPreferences.getInt("PREVIOUSTIME", 0);
         Log.d("$$$$$$",""+previousLockTime);
+
+        switch (previousLockTime){
+            case 1: // using 1 minute for demo and testing purposes
+                bones = 1;
+                break;
+            case 15:
+                bones = 2;
+                break;
+            case 30:
+                bones = 3;
+                break;
+            case 45:
+                bones = 4;
+                break;
+            case 60:
+                bones = 6;
+                break;
+        }
+
+        bonesTextView = (TextView)findViewById(R.id.textView);
+        bonesTextView.setText("You have earned " + bones + " bone(s)!");
+
+        /*
         SharedPreferences.Editor myEditor = myPreferences.edit();
         myEditor.putInt("TOTALBONES", bones+50);
+        myEditor.putInt("CURRBONES", bones+50);
         myEditor.commit();
+        */
 
         timeAchievedTextView = (TextView)findViewById(R.id.timeAchievedTextView);
         timeAchievedTextView.setText(
@@ -45,7 +71,7 @@ public class CongratsActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(CongratsActivity.this, MainActivity.class));
                 finish();
             }
         });
