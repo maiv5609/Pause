@@ -21,8 +21,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(SplashActivity.this);
         SharedPreferences myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
 
         // using while developing to clear user data from preferences

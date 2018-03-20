@@ -23,8 +23,6 @@ public class getting_started extends AppCompatActivity {
     View.OnClickListener gettingStarted = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            //Query for dogs' name
             startActivity(new Intent(getting_started.this, BreedSelect.class));
         }
     };

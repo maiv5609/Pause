@@ -103,6 +103,27 @@ public class PauseActivity extends Activity {
         Log.d("CURRENT LOCK", ""+selectedTime);
         Log.d("CURRENT DAY", ""+day);
 
+        //Assign bones based on time they selected
+        int currBones = myPreferences.getInt("TOTALBONES", 0);
+        switch (selectedTime){
+            case 15:
+                currBones = currBones + 2;
+                myEditor.putInt("TOTALBONES", currBones);
+                break;
+            case 30:
+                currBones = currBones + 3;
+                myEditor.putInt("TOTALBONES", currBones);
+                break;
+            case 45:
+                currBones = currBones + 4;
+                myEditor.putInt("TOTALBONES", currBones);
+                break;
+            case 60:
+                currBones = currBones + 6;
+                myEditor.putInt("TOTALBONES", currBones);
+                break;
+        }
+
         //Add day
         switch (day) {
             case Calendar.SUNDAY:

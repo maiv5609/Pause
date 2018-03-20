@@ -40,11 +40,28 @@ public class StatsActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graph);
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
 
-
+        //Get total pause time
         TextView timePaused = (TextView) findViewById(R.id.timeValue);
-        float hours = myPreferences.getFloat("TOTALTIME", 0.0f);
-        timePaused.setText(""+hours/60 + " HRS");
+        float minutes = myPreferences.getFloat("TOTALTIME", 0.0f);
+        timePaused.setText(""+minutes/60 + " HRS");
 
+        //Get Total bones earned
+        TextView boneValue = (TextView) findViewById(R.id.bonesValue);
+        int totalBones = myPreferences.getInt("TOTALBONES", 0);
+        if (totalBones == 1){
+            boneValue.setText(""+ totalBones + " bone");
+        }else{
+            boneValue.setText(""+ totalBones + " bones");
+        }
+
+        //Calc dog's age from total time
+        TextView dogAgeValue = (TextView) findViewById(R.id.dogAgeValue);
+        int dogAge = Math.round(minutes/1440);
+        if(dogAge == 1){
+            dogAgeValue.setText("" + dogAge + " Day");
+        }else{
+            dogAgeValue.setText("" + dogAge + " Days");
+        }
 
 
         /* ----- Daily ----- */
