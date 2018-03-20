@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -49,6 +50,7 @@ public class PopActivity extends Activity {
         String text = dropdown.getSelectedItem().toString();
         int digits = Integer.parseInt(text.replaceAll("[^0-9.]", ""));
         SharedPreferences.Editor myEditor = myPreferences.edit();
+        Log.d("TIME:", ""+digits);
         myEditor.putInt("PAUSE_TIME", digits);
         myEditor.commit();
 

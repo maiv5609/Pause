@@ -19,6 +19,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import org.w3c.dom.Text;
 
 import java.sql.Date;
+import java.text.NumberFormat;
 import java.util.Calendar;
 
 /**
@@ -51,7 +52,12 @@ public class StatsActivity extends AppCompatActivity {
         //Get total pause time
         TextView timePaused = (TextView) findViewById(R.id.timeValue);
         float minutes = myPreferences.getFloat("TOTALTIME", 0.0f);
-        timePaused.setText(""+minutes/60 + " HRS");
+        float roundMin = minutes/60;
+        NumberFormat formatter = NumberFormat.getNumberInstance();
+        formatter.setMinimumFractionDigits(2);
+        formatter.setMaximumFractionDigits(2);
+        String output = formatter.format(roundMin);
+        timePaused.setText(""+ output + " HRS");
 
         //Get Total bones earned
         TextView boneValue = (TextView) findViewById(R.id.bonesValue);
