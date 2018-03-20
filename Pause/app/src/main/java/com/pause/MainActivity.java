@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
             dogImage.setImageResource(R.drawable.shiba);
         }
 
-
+        //Update current bones
+        dogBones = (TextView)findViewById(R.id.boneCount);
+        int currBones = myPreferences.getInt("CURRBONES", 0);
+        dogBones.setText("" + currBones);
 
         Button pauseButton = (Button)findViewById(R.id.pauseButton);
         pauseButton.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,PopActivity.class));
             }
         });
+
 
         Button quickPauseButton = (Button)findViewById(R.id.quickPauseButton);
         quickPauseButton.setOnClickListener(new View.OnClickListener() {

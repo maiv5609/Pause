@@ -104,23 +104,32 @@ public class PauseActivity extends Activity {
         Log.d("CURRENT DAY", ""+day);
 
         //Assign bones based on time they selected
-        int currBones = myPreferences.getInt("TOTALBONES", 0);
+        int totalBones = myPreferences.getInt("TOTALBONES", 0);
+        int currBones = myPreferences.getInt("CURRBONES", 0);
         switch (selectedTime){
             case 15:
+                totalBones = totalBones + 2;
                 currBones = currBones + 2;
-                myEditor.putInt("TOTALBONES", currBones);
+                myEditor.putInt("TOTALBONES", totalBones);
+                myEditor.putInt("CURRBONES", currBones);
                 break;
             case 30:
+                totalBones = totalBones + 3;
                 currBones = currBones + 3;
-                myEditor.putInt("TOTALBONES", currBones);
+                myEditor.putInt("TOTALBONES", totalBones);
+                myEditor.putInt("CURRBONES", currBones);
                 break;
             case 45:
+                totalBones = totalBones + 4;
                 currBones = currBones + 4;
-                myEditor.putInt("TOTALBONES", currBones);
+                myEditor.putInt("TOTALBONES", totalBones);
+                myEditor.putInt("CURRBONES", currBones);
                 break;
             case 60:
+                totalBones = totalBones + 6;
                 currBones = currBones + 6;
-                myEditor.putInt("TOTALBONES", currBones);
+                myEditor.putInt("TOTALBONES", totalBones);
+                myEditor.putInt("CURRBONES", currBones);
                 break;
         }
 

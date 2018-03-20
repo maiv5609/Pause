@@ -24,6 +24,7 @@ public class getting_started extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             startActivity(new Intent(getting_started.this, BreedSelect.class));
+            finish();
         }
     };
 }

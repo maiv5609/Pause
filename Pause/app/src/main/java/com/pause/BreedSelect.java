@@ -132,6 +132,7 @@ public class BreedSelect extends AppCompatActivity {
 
             //Query for dogs' name
             startActivity(new Intent(BreedSelect.this, nameDialogActivity.class));
+            finish();
         }
     };
 

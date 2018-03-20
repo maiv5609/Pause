@@ -29,6 +29,7 @@ public class StatsActivity extends AppCompatActivity {
 
     ImageButton homeButton;
     SharedPreferences myPreferences;
+    TextView dogBones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,13 @@ public class StatsActivity extends AppCompatActivity {
         homeButton.setOnClickListener(selectHome);
         GraphView graph = (GraphView) findViewById(R.id.graph);
         myPreferences = this.getSharedPreferences(getString(R.string.preferenceKey), Context.MODE_PRIVATE);
+
+        //Update current bones
+        dogBones = (TextView)findViewById(R.id.boneCount);
+        int currBones = myPreferences.getInt("CURRBONES", 0);
+        dogBones.setText("" + currBones);
+
+
 
         //Get total pause time
         TextView timePaused = (TextView) findViewById(R.id.timeValue);
